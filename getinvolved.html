@@ -8,7 +8,7 @@
 	
 	For information on settings, see http://scaffold.tumblr.com/options/
 	-->
-	<title>Campus House &mdash; About</title>
+	<title>Campus House &mdash; Get Involved</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="tumblr-theme" content="8951" />
 	
@@ -66,6 +66,80 @@
 	<style type="text/css" media="screen">
 		h1.page_title .search_query, h1.page_title .tag { color: #333; }
 
+		#mosaic {
+			margin:0;
+			padding:0;
+			list-style:none !important;
+			display: block;
+		}
+		
+		#mosaic {
+			font-family: helvetica;
+			color: white;
+			text-transform: uppercase;
+			letter-spacing: -.1em;
+			font-weight: bold;
+			line-height: 100%;
+			overflow: auto;
+			margin-bottom: 20px;
+		}
+		#mosaic li {
+			margin:0;
+			padding:0;
+			float: left;
+			width: 48px;
+			height: 48px;
+			overflow: hidden;
+			margin-left: 1px;
+		}
+		#mosaic a {
+			color: white;
+		}
+		
+		#mosaicdetails {
+			height: 170px;
+		}
+		
+		#mosaicdetails div {
+			margin:0;
+			padding:0;
+			display: none;
+		}
+		
+		#default {
+			display: block;
+		}
+		
+		#mosaic .crew {
+			background-color: #b6352f;
+		}
+		#mosaic .drama {
+			background-color: #22574f;
+		}
+		#mosaic .global {
+			background-color: #4d7d7f;
+		}
+		#mosaic .gh {
+			background-color: #552f1a;
+		}
+		#mosaic .hospitality {
+			background-color: #e0956e;
+		}
+		#mosaic .nursery {
+			background-color: #a82e43;
+		}
+		#mosaic .office {
+			background-color: #af9f3f;
+		}
+		#mosaic .photo {
+			background-color: #51a29c;
+		}
+		#mosaic .service {
+			background-color: #f05e39;
+		}
+		#mosaic .worship {
+			background-color: #f39d48;
+		}
 		
 	</style>
 </head>  		 	
@@ -84,13 +158,18 @@
 		<script type="text/javascript" charset="utf-8">
 			document.write('<div id="loader"><p class="replace">Loading&hellip;</p></div>');
 		</script>
-		
-		
-		
-		
-		<!---->
-		
-		
+		<script type="text/javascript" charset="utf-8">
+
+			
+			$(document).ready(function(){
+				$('#mosaic a').hover(function() {
+					$('#mosaicdetails div').hide();
+					$('#mosaicdetails #default').hide();
+					$($(this).attr('href')).show();
+				}, function() {
+				});
+			});
+		</script>
 		<div id="cols">
 			
 			
@@ -100,33 +179,99 @@
 						<div class="panel_head" style="width: 815px; background: none;"></div>
 						
 							<div class="panel_content base_format" style="815px;">
-								<img src="http://www.pcch.org/blog/aboutheader.jpg" style="margin-bottom:20px;"/>
 
 								<div class="whatis" style="width: 490px; float: left; margin-right: 20px">
-									<h2>What is Campus House?</h2>
-									<p><a href="http://www.flickr.com/photos/pcch/show/" target="_blank" >Campus House</a> is a community of Jesus followers in the middle of Purdue's campus that has progressive worship, Biblical teaching, and no denominational walls.</p>
-
-									<h2>What happens here?</h2>
-									<p>We have Sunday services; a midweek Bible Study: Thursdays @ 7:30, small groups throughout the week, and all kinds of events, opportunities to&nbsp;serve&nbsp;in the community, and ways to connect.</p>
+									<h2>Community Groups</h2>
+									<p>This is where life really happens at Campus House. A Community Group is a small group of 6-9 students who meet weekly to intentionally support, encourage, and challenge each other in their journeys with Christ. These groups provide a more personal setting within our larger Campus House body where members can share one another’s joys and struggles as they grow in their love for God and each other.</p>
+									<p>If you would like to know more or would like to join a group please contact <a href="mailto:kliechty@pcch.org">Ken</a></p>
 									
-									<p>Watch <a href="/tagged/60_second_story">60 Second Stories</a> from students and alumni about their experience at Campus House.</p>
-
-									<h2>How do I get involved?</h2>
-									<p>Show up. Go to <a href="/tagged/event">things</a>. If you're looking for community, join a Community Group. &nbsp;If you'd like to serve, <a href="/getinvolved">get plugged in</a> to an Mosaic. Find something you're passionate about-- something that challenges you.</p>
-
-									<h2>Where is Campus House?</h2>
-									<p>The ugly, black, mushroom-looking building across from Lilly Hall on the corner of <a target="_blank" href="http://maps.google.com/maps?q=1000+West+State+Street,+West+Lafayette,+IN&hl=en&sll=37.0625,-95.677068&sspn=56.724997,56.777344&z=17">State St. &amp; Waldron</a>.</p>
-									<iframe width="490" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=1000+West+State+Street,+West+Lafayette,+IN&amp;aq=1&amp;sll=37.0625,-95.677068&amp;sspn=56.724997,56.777344&amp;ie=UTF8&amp;hq=&amp;hnear=1000+W+State+St,+West+Lafayette,+Indiana+47906&amp;ll=40.424453,-86.918144&amp;spn=0.006746,0.006931&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+									<h2>Mosaic</h2>
+									<p style="font-family: monospace"><strong>[mO-'zA-ik]</strong> - small pieces of variously colored material connected with one another to form a complete picture</p>
+										
+										<ul id="mosaic">
+											<a href="#crew"><li class="crew">Crew</li></a>
+											<a href="#drama"><li class="drama">Drama</li></a>
+											<a href="#global"><li class="global">Global Connect</li></a>
+											<a href="#gh"><li class="gh">Greyhouse</li></a>
+											<a href="#hospitality"><li class="hospitality">Hospitality</li></a>
+											<a href="#worship"><li class="worship">Music &amp; Arts</li></a>
+											<a href="#nursery"><li class="nursery">Nursery</li></a>
+											<a href="#office"><li class="office">Office</li></a>
+											<a href="#photo"><li class="photo">Photo</li></a>
+											<a href="#service"><li class="service">Service</li></a>
+										</ul>
+										
+										<div id="mosaicdetails">
+											<p id="default">Each individual piece may not seem that significant on its own, but when combined with all the other pieces, it becomes essential for completing that beautiful picture. Campus House Mosaic is a group of diversely gifted individuals who serve God in various ways at Campus House and in our community. We need unique people, like yourself, to volunteer your God-given gifts to help us complete the beautiful picture of the body of Christ here at Campus House.</p>
+											<div id="crew">
+												<h4>Crew</h4>
+												<p>Maintenance and upkeep projects around Campus House and Greyhouse.</p>
+												<p>No experience necessary. Work on setting up and tearing down <a href="starrynightfestival.com" target="_blank">Starry Night Festival</a>.</p>
+												<p>Contact: <a href="mailto:aray@pcch.org">Alex Ray</a></p>
+											</div>
+											<div id="drama">
+												<h4>Drama</h4>
+												<p>Telling stories using the stage &amp; screen.</p>
+												<p>Be part of sketches, behind the scenes work and help supplement teachings.</p>
+												<p>Contact: <a href="mailto:mburk@pcch.org">Mitch Burk</a></p>
+											</div>
+											<div id="global">
+												<h4>Global Connect</h4>
+												<p>Cross-cultural outreach to international students that shares friendship, culture, and the Gospel in a natural way.</p>
+												<p>Meet up with an international student for a coffee, lunch, take them to Wal-mart, etc.</p>
+												<p>Contact: <a href="mailto:wraley@pcch.org">Wes Raley</a></p>
+											</div>
+											<div id="gh">
+												<h4>Greyhouse</h4>
+												<p>Student volunteers are a vital part of the way Greyhouse serves this community.</p>
+												<p>Host bands &amp; help close, office work &amp; laundry, assemble promotional materials.</p>
+												<p>Contact: <a href="mailto:jmyles@pcch.org">Jason Myles</a></p>
+											</div>
+											<div id="hospitality">
+												<h4>Hospitality</h4>
+												<p>Bringing together a group of people who can help make the Sunday morning experience as welcoming as possible.</p>
+												<p>Greet people as they walk in the doors, answer questions, manage coffee and bagels.</p>
+												<p>Contact: <a href="mailto:sdiesslin@pcch.org">Sally Diesslin</a></p>
+											</div>
+											<div id="worship">
+												<h4>Music &amp; Arts</h4>
+												<p>All of us inherit God’s creativity. By accepting our creative impulse we can expose truths about God and ourselves otherwise unreachable.</p>
+												<p>Looking for musicians &amp; singers, sound &amp; projection techs, artists.</p>
+												<p>Contact: <a href="mailto:dchew@pcch.org">Duane Chew</a></p>
+											</div>
+											<div id="nursery">
+												<h4>Nursery</h4>
+												<p>Providing care for children from infant to elementary school age.</p>
+												<p>Care for children or teach Sunday school during 8:30am service.</p>
+												<p>Contact: <a href="mailto:sdiesslin@pcch.org">Sally Diesslin</a></p>
+											</div>
+											<div id="office">
+												<h4>Office</h4>
+												<p>Interested in serving Campus House on the administrative side.</p>
+												<p>Mailings, scan, copy, print, organize, maintain closets, stock vending machine, run errands.</p>
+												<p>Contact: <a href="mailto:skleine@pcch.org">Sarah Kleine</a></p>
+											</div>
+											<div id="photo">
+												<h4>Photo</h4>
+												<p>Serving Christ through our creativity in photography and video. It is an art that is often untapped by the Church.</p>
+												<p>Skilled in a professional still camera and/or video equipment, knowledgeable in photo and/or video editing.</p>
+												<p>Contact: <a href="mailto:jgay@pcch.org">Lil' Jimmy Gay</a></p>
+											</div>
+											<div id="service">
+												<h4>Service</h4>
+												<p>Variety of weekly and one-time opportunities throughout the community.</p>
+												<p>Volunteer at youth group, homeless shelter, retirement homes.</p>
+												<p>Contact: <a href="mailto:aray@pcch.org">Alex Ray</a></p>
+											</div>
+										</div>
+										
+										
+									<h2>Windows</h2>
+									<p>...</p>
 								</div>
 								
 								
 								<div class="servicetimes" style="width: 245px; float:left; padding-left: 19px; border-left: 1px solid #b0b0b0;">
-									<h3>2011-2012 Service Times</h3>
-									<p><strong>Sunday:</strong> 8:30am, 10:00am, 11:30am, 7pm<br/><strong>Thursday:</strong> 7:30pm</p>
-									
-									<p><a href="/tagged/event">Event Details</a><br/><a href="/events">Event Calendar</a></p>
-								
-
 								</div>
 							</div>
 						
@@ -220,18 +365,6 @@
 </script>
 
 
-<script type="text/javascript">var disqus_url = "http://blog.pcch.org/post/1037734530/sunday-recap-8-29-10"; var disqus_title ="Sunday Recap- 8/29/10";</script>
-
-<script type="text/javascript">
-	(function() {
-		var path = window.location.pathname;
-		if(path != '/ask/' && path != '/ask' && path != '/submit/' && path != '/submit'){
-			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			dsq.src = 'http://campushouse.disqus.com/embed.js';
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);		
-		}
-	})();
-</script>
 
 <script type="text/javascript">
 //<![CDATA[
