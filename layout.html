@@ -66,7 +66,7 @@
     $.get(domain + path + '.html', function(data) {
       $('#page').html($(data));
     });
-    $.get('file:///Users/ajjahn/Desktop/tumblr/navigation.html', function(data) {
+    $.get(domain + '/navigation.html', function(data) {
       $('#sidebar').prepend($(data));
     });
   </script>
