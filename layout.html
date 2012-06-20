@@ -66,8 +66,8 @@
     $.get(domain + path + '.html', function(data) {
       $('#page').html($(data));
     });
-    $.get(domain + '/navigation.html', function(data) {
-      $('#sidebar').prepend($(data));
+    $.get('/', function(data) {
+      $('#sidebar').prepend($(data).find('#nav'));
     });
   </script>
 </head>       
