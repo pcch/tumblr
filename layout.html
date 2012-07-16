@@ -27,7 +27,7 @@
 
   <link rel="shortcut icon" href="http://26.media.tumblr.com/avatar_562c47301fb7_16.png"/>
   <link rel="alternate" type="application/rss+xml" href="http://blog.pcch.org/rss"/>
-  
+
   <link rel="stylesheet" href="http://static.tumblr.com/lhq9par/Ymjl5qx6i/scaffold_v1.5.css" type="text/css" media="screen, projection" />
   <style type="text/css" media="screen">
     .artwork, .has_icon .icon, .side_meta .tags li a:hover, .inline_audio .artwork { background-color: #68A8C5; }
@@ -36,10 +36,56 @@
   </style>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    (function( jQuery ) {
+
+    if ( window.XDomainRequest ) {
+    	jQuery.ajaxTransport(function( s ) {
+    		if ( s.crossDomain && s.async ) {
+    			if ( s.timeout ) {
+    				s.xdrTimeout = s.timeout;
+    				delete s.timeout;
+    			}
+    			var xdr;
+    			return {
+    				send: function( _, complete ) {
+    					function callback( status, statusText, responses, responseHeaders ) {
+    						xdr.onload = xdr.onerror = xdr.ontimeout = jQuery.noop;
+    						xdr = undefined;
+    						complete( status, statusText, responses, responseHeaders );
+    					}
+    					xdr = new XDomainRequest();
+    					xdr.open( s.type, s.url );
+    					xdr.onload = function() {
+    						callback( 200, "OK", { text: xdr.responseText }, "Content-Type: " + xdr.contentType );
+    					};
+    					xdr.onerror = function() {
+    						callback( 404, "Not Found" );
+    					};
+    					if ( s.xdrTimeout ) {
+    						xdr.ontimeout = function() {
+    							callback( 0, "timeout" );
+    						};
+    						xdr.timeout = s.xdrTimeout;
+    					}
+    					xdr.send( ( s.hasContent && s.data ) || null );
+    				},
+    				abort: function() {
+    					if ( xdr ) {
+    						xdr.onerror = jQuery.noop();
+    						xdr.abort();
+    					}
+    				}
+    			};
+    		}
+    	});
+    }
+    })( jQuery );
+  </script>
   <script type="text/javascript" src="http://static.tumblr.com/lhq9par/Lemkzomov/jquery.masonry.min.js"></script>
   <script type="text/javascript" src="http://static.tumblr.com/lhq9par/Y6Kl2t26n/jquery.fancybox-1.3.1.pack.js"></script>
   <script type="text/javascript" src="http://static.tumblr.com/lhq9par/wAsl42nv0/scaffold_v1.6.1.js"></script>
-  
+
   <script type="text/javascript" src="http://static.tumblr.com/lhq9par/1imkzomne/cufon-yui.js"></script>
   <script type="text/javascript" src="http://static.tumblr.com/lhq9par/OBel10drp/titillium_400_mod2.font.js"></script>
   <script type="text/javascript" src="http://static.tumblr.com/lhq9par/koyl10dsq/titillium_800_mod2.font.js"></script>
@@ -49,17 +95,17 @@
     var disableQuoteTitleFonts;
     var disableHeaderNavFonts;
     var slimAudioPlayer;
-    
-    
-    
+
+
+
     document.write('<style type="text/css" media="screen"> .player, #page .video .video_embed, .photoset_narrow { display: none; } </style>');
-    
-    
+
+
   </script>
   <style type="text/css" media="screen">
     h1.page_title .search_query, h1.page_title .tag { color: #333; }
   </style>
-  
+
   <script type="text/javascript" charset="utf-8">
     var domain = 'http://media.pcch.org/github/pcch/tumblr/master'
     var path = window.location.pathname;
@@ -70,31 +116,31 @@
       $('#sidebar').prepend($(data).find('#nav'));
     });
   </script>
-</head>       
+</head>
 
 <body>
 
 <!-- Tumblr Theme #8951 -->
 
 <div id="container">
-  
+
   <div id="header" class="with_image">
     <a href="/"><img src="http://static.tumblr.com/zrnks7g/91wm740xc/banner-2.jpg"/></a>
   </div>
-  
+
   <div id="page">
     <div id="loader"><p class="replace">Loading&hellip;</p></div>
     <!-- PAGE LOADS HERE -->
   </div>
-  
+
   <div id="sidebar">
     <!-- NAV LOADS HERE -->
-    
+
     <div id="twitter" style="display:none;" class="has_icon">
       <div id="tweets"></div>
       <p><a href="http://twitter.com/purduech">Follow on Twitter</a></p>
     </div>
-      
+
     <form action="/search" method="get" id="search">
       <fieldset>
           <input type="text" name="q" id="search_field" value=""/>
@@ -102,7 +148,7 @@
       </fieldset>
     </form>
   </div>
-  
+
   <div id="footer">
     <ul class="footer_links">
       <li class="has_icon icon_rss"><a href="http://blog.pcch.org/rss">RSS feed</a></li>
@@ -113,19 +159,19 @@
 
 <script type="text/javascript"> Cufon.now(); </script>
 
-  
+
   <script type="text/javascript">
     function recent_tweets(data) {
       for (i=0; i<data.length; i++) {
-        document.getElementById("tweets").innerHTML = 
-        document.getElementById("tweets").innerHTML + 
+        document.getElementById("tweets").innerHTML =
+        document.getElementById("tweets").innerHTML +
           '<a href="http://twitter.com/purduech/status/' + data[i].id + '"><div class="content">' + data[i].text + '</div></a>';
       }
       document.getElementById("twitter").style.display = 'block';
     }
   </script>
   <script type="text/javascript" src="/tweets.js"></script>
-  
+
 
 
 <script type="text/javascript">
