@@ -1,0 +1,479 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<!--  		 	
+	Scaffold Theme by Mike Harding, v2.01
+	http://scaffold.tumblr.com
+	
+	For information on settings, see http://scaffold.tumblr.com/options/
+	-->
+	<title>{Title}{block:PostSummary} &mdash; {PostSummary}{/block:PostSummary}{block:SearchPage} &mdash; {lang:Search results for SearchQuery}{/block:SearchPage}</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="tumblr-theme" content="8951" />
+	{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+	
+	<meta name="color:Icon" content="#ff6600" />
+	<meta name="color:Divider lines" content="#cccccc" />
+	<meta name="color:Vimeo player" content="#ff6600" />
+	<meta name="image:Header" content="" />
+	<meta name="if:Show description" content="1" />
+	<meta name="if:Show author on posts" content="0" />
+	<meta name="if:Show date on all posts" content="0" />
+	<meta name="if:Disable font for quotes and titles" content="0" />
+	<meta name="if:Disable font for header and nav" content="0" />
+	<meta name="if:Show download link for external audio files" content="0" />
+	<meta name="if:Single column layout" content="0" />
+	<meta name="if:Show Facebook Like button for posts" content="0" />
+	<meta name="if:Hide Twitter updates" content="0" />
+	<meta name="if:Slim audio player" content="0" />
+	<meta name="if:Show Likes" content="0" />
+	<meta name="text:Heading for Likes" content="Noted elsewhere" />
+	<meta name="text:Google Analytics ID" content="" />
+	<meta name="text:Disqus shortname" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+	<link rel="shortcut icon" href="{Favicon}"/>
+	<link rel="alternate" type="application/rss+xml" href="{RSS}"/>
+	
+	<link rel="stylesheet" href="http://static.tumblr.com/lhq9par/Ymjl5qx6i/scaffold_v1.5.css" type="text/css" media="screen, projection" />
+	<style type="text/css" media="screen">
+		.artwork, .has_icon .icon, .side_meta .tags li a:hover, .inline_audio .artwork { background-color: {color:Icon}; }
+		#header, #page, .side_meta .info li, #nav, #nav li, #footer, #content { border-color: {color:Divider lines}; }
+		#sidebar .sidebar_head, #content span.gutter { background-color: {color:Divider lines}; }
+	</style>
+
+	<script type="text/javascript" src="http://static.tumblr.com/lhq9par/6Nmkzomod/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="http://static.tumblr.com/lhq9par/Lemkzomov/jquery.masonry.min.js"></script>
+	<script type="text/javascript" src="http://static.tumblr.com/lhq9par/Y6Kl2t26n/jquery.fancybox-1.3.1.pack.js"></script>
+	<script type="text/javascript" src="http://static.tumblr.com/lhq9par/wAsl42nv0/scaffold_v1.6.1.js"></script>
+
+
+    <script type="text/javascript" src="http://static.tumblr.com/lhq9par/1imkzomne/cufon-yui.js"></script>
+	<script type="text/javascript" src="http://static.tumblr.com/lhq9par/OBel10drp/titillium_400_mod2.font.js"></script>
+	<script type="text/javascript" src="http://static.tumblr.com/lhq9par/koyl10dsq/titillium_800_mod2.font.js"></script>
+	<script type="text/javascript">
+		var customColor = '{color:Icon}';
+		var vimeoColor = '{color:Vimeo player}';
+		var disableQuoteTitleFonts;
+		var disableHeaderNavFonts;
+		var slimAudioPlayer;
+		{block:IfDisableFontForQuotesAndTitles}var disableQuoteTitleFonts = true;{/block:IfDisableFontForQuotesAndTitles}
+		{block:IfDisableFontForHeaderAndNav}var disableHeaderNavFonts = true;{/block:IfDisableFontForHeaderAndNav}
+		{block:IfSlimAudioPlayer}var slimAudioPlayer = true;{/block:IfSlimAudioPlayer}
+		document.write('<style type="text/css" media="screen"> .player, #page .video .video_embed, .photoset_narrow { display: none; } </style>');
+		
+		{block:NotEnglish}
+		    disableQuoteTitleFonts = true;
+		    disableHeaderNavFonts = true;
+		{/block:NotEnglish}
+	</script>
+	<style type="text/css" media="screen">
+		h1.page_title .search_query, h1.page_title .tag { color: #333; }
+
+		{CustomCSS}
+	</style>
+
+</head>  		 	
+
+<body>
+
+<!-- Tumblr Theme #8951 -->
+
+<div id="container">
+	
+	<div id="header"{block:IfHeaderImage} class="with_image"{/block:IfHeaderImage}>
+		{block:IfNotHeaderImage}
+		<h1><a href="/">{Title}</a></h1>
+		<form action="/search" method="get" id="search">
+			<fieldset>
+		    	<input type="text" name="q" id="search_field" value="{SearchQuery}"/>
+		    	<input type="submit" id="search_button" value="{lang:Search}"/>
+			</fieldset>
+		</form>
+		{/block:IfNotHeaderImage}
+		{block:IfHeaderImage}<a href="/"><img src="{image:Header}"/></a>{/block:IfHeaderImage}
+	</div>
+	<div id="page">
+		<script type="text/javascript" charset="utf-8">
+			document.write('<div id="loader"><p class="replace">{lang:Loading}&hellip;</p></div>');
+		</script>
+		{block:TagPage}<h1 class="page_title">{lang:Posts tagged Tag 2}</h1>{/block:TagPage}
+		
+		{block:SearchPage}<h1 class="page_title">
+			{block:SearchResults}
+				{lang:SearchResultCount results for SearchQuery 2}
+			{/block:SearchResults}
+			
+			{block:NoSearchResults}
+				{lang:No search results for SearchQuery 2}
+			{/block:NoSearchResults}
+		</h1>{/block:SearchPage}
+		
+		<!--{block:SearchPage}<h1 class="page_title has_results">{SearchResultCount} search result<span class="plural">s</span> for &#8216;<span class="query">{SearchQuery}</span>&#8217;</h1>{block:NoSearchResults}<h1 class="page_title no_results">Sorry, no search results for &#8216;<span class="query">{SearchQuery}</span>&#8217;</h1>{/block:NoSearchResults}{/block:SearchPage}-->
+		
+		{block:DayPage}<h1 class="page_title">{lang:Posted on DayOfMonth Month Year}</h1>{/block:DayPage}
+		<div id="cols">
+			{block:IndexPage}{block:IfSingleColumnLayout}<div id="content" class="single_col">{/block:IfSingleColumnLayout}{/block:IndexPage}
+			{block:Posts}
+				{block:PermalinkPage}<div id="content">{/block:PermalinkPage}
+					{block:IndexPage}{block:IfSingleColumnLayout}<div class="single_wrapper">{/block:IfSingleColumnLayout}{/block:IndexPage}
+					<div class="post {block:IndexPage}narrow {/block:IndexPage}{block:PermalinkPage} full{/block:PermalinkPage} {block:Text}text{/block:Text}{block:Photo}photo{/block:Photo}{block:Photoset}photoset{/block:Photoset}{block:Quote}quote{/block:Quote}{block:Link}link{/block:Link}{block:Chat}chat{/block:Chat}{block:Audio}audio{/block:Audio}{block:Video}video{/block:Video}{block:Answer}answer{/block:Answer}">
+						<div class="panel_head"></div>
+						{block:Text}
+							<div class="panel_content base_format">
+								{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+								{Body}
+								{block:More}<p class="more_link"><a href="{Permalink}">{lang:Read more}</a> &#187;</p>{/block:More}
+							</div>
+						{/block:Text}
+						{block:Photo}
+							{block:IndexPage}
+								{block:IfSingleColumnLayout}
+								<div class="panel_content base_format">
+									<div class="photo_full"><a href="{LinkURL}"{block:HighRes} rel="{PhotoURL-HighRes}" class="lightbox"{/block:HighRes}><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a></div>
+									{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+								</div>
+								{/block:IfSingleColumnLayout}
+								{block:IfNotSingleColumnLayout}
+								<div class="photo_narrow"><a href="{LinkURL}"{block:HighRes} rel="{PhotoURL-HighRes}" class="lightbox"{/block:HighRes}><img src="{PhotoURL-400}" alt="{PhotoAlt}"/></a></div>
+								<div class="panel_content base_format">
+									{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+								</div>
+								{/block:IfNotSingleColumnLayout}
+							{/block:IndexPage}
+							{block:PermalinkPage}
+								<div class="panel_content base_format">
+									<div class="photo_full"><a href="{LinkURL}"{block:HighRes} rel="{PhotoURL-HighRes}" class="lightbox"{/block:HighRes}><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a></div>
+									{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+								</div>
+							{/block:PermalinkPage}
+						{/block:Photo}
+						{block:Photoset}
+							{block:IndexPage}
+								{block:IfSingleColumnLayout}
+								<div class="panel_content base_format">
+									<div class="photoset_full">{Photoset-500}</div>
+									{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+								</div>
+								{/block:IfSingleColumnLayout}
+								{block:IfNotSingleColumnLayout}
+								<div class="photoset_narrow">{Photoset-400}</div>
+								<div class="panel_content base_format">
+									{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+								</div>
+								{/block:IfNotSingleColumnLayout}
+							{/block:IndexPage}
+							{block:PermalinkPage}
+								<div class="panel_content base_format">
+									<div class="photoset_full">{Photoset-500}</div>
+									{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+								</div>
+							{/block:PermalinkPage}
+						{/block:Photoset}
+						{block:Quote}
+							<div class="panel_content {block:IndexPage}narrow_quote{/block:IndexPage} {Length}">
+								<blockquote class="quote_text">{Quote}</blockquote>
+								<div class="cite base_format">{block:Source}{Source}{/block:Source}</div>
+							</div>
+						{/block:Quote}
+						{block:Link}
+							<div class="panel_content base_format">
+								{block:IndexPage}<h2 class="has_icon"><a href="{URL}" {Target}>{Name}</a></h2>{/block:IndexPage}
+								{block:PermalinkPage}<h1 class="has_icon"><a href="{URL}" {Target}>{Name}</a></h1>{/block:PermalinkPage}
+								{block:Description}{Description}{/block:Description}
+							</div>
+						{/block:Link}
+						{block:Chat}
+							<div class="panel_content base_format">
+								{block:Title}
+									{block:IndexPage}<h2><a href="{Permalink}">{Title}</a></h2>{/block:IndexPage}
+									{block:PermalinkPage}<h1><a href="{Permalink}">{Title}</a></h1>{/block:PermalinkPage}
+								{/block:Title}
+								<ul class="chat">
+									{block:Lines}
+									<li class="{Alt} user_{UserNumber}">{block:Label}<small>{Label}</small> {/block:Label}{Line}</li>
+									{/block:Lines}
+								</ul>
+							</div>
+						{/block:Chat}
+						{block:Audio}
+							<div class="album">
+								<div class="artwork">{block:AlbumArt}<img src="{AlbumArtURL}" width="125" height="125" alt="" />{/block:AlbumArt}</div>
+								{block:ifSlimAudioPlayer}<div class="player custom_player">{AudioPlayer}</div>{/block:ifSlimAudioPlayer}
+								{block:ifNotSlimAudioPlayer}<div class="player">{AudioPlayerBlack}</div>{/block:ifNotSlimAudioPlayer}
+								<p class="plays">{PlayCountWithLabel}</p>
+								{block:ExternalAudio}{block:IfShowDownloadLinkForExternalAudioFiles}<p class="audio_download"><a href="{ExternalAudioURL}" class="download_audio">{lang:Download this track}</a></p>{/block:IfShowDownloadLinkForExternalAudioFiles}{/block:ExternalAudio}
+								<div class="player_head"></div><div class="player_foot"></div>
+							</div>
+							<div class="audio_info">
+								<div class="panel_content base_format">
+									{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+								</div>
+							</div>
+						{/block:Audio}
+						{block:Video}
+							{block:IndexPage}
+								{block:IfSingleColumnLayout}
+								<div class="panel_content base_format">
+									<div class="video_embed">{Video-500}</div>
+									{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+								</div>
+								{/block:IfSingleColumnLayout}
+								{block:IfNotSingleColumnLayout}
+								<div class="video_embed">{Video-400}</div>
+								<div class="panel_content base_format">
+									{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+								</div>
+								{/block:IfNotSingleColumnLayout}
+							{/block:IndexPage}
+							{block:PermalinkPage}
+								<div class="panel_content base_format">
+									<div class="video_embed">{Video-500}</div>
+									{block:Caption}{Caption}{/block:Caption}
+								</div>
+							{/block:PermalinkPage}
+						{/block:Video}
+						{block:Answer}
+							<div class="panel_content">
+								<div class="ask_question">
+									{Question}
+									<cite>&mdash; {lang:Asked by Asker}</cite>
+								</div>
+								<div class="ask_answer base_format">{Answer}</div>
+							</div>
+						{/block:Answer}
+						{block:PermalinkPage}
+							{block:PostNotes}
+							<div id="notes">
+								<div class="notes_header">
+									<h3>{NoteCountWithLabel}</h3>
+									<p id="toggle_notes" class="has_icon icon_shownotes"><a href="#notes">{lang:Show}</a></p>
+								</div>
+								{PostNotes}
+							</div>
+							{/block:PostNotes}
+							{block:IfDisqusShortname}
+								<div id="disqus">
+									<div id="disqus_thread"></div>
+									<noscript><p>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus shortname}">comments powered by Disqus.</a></p></noscript>
+									<p>{lang:Blog comments powered by Disqus 2}</p>
+								</div>
+							{/block:IfDisqusShortname}
+						{/block:PermalinkPage}
+						
+						<div class="panel_foot">
+							{block:IndexPage}
+								{block:IfNotSingleColumnLayout}
+								{block:HasTags}
+									<ul class="tags">
+										{block:Tags}<li><a href="{TagURL}" class="tag">{Tag}</a></li>{/block:Tags}
+									</ul>
+								{/block:HasTags}
+								<ul class="meta">
+									<li class="end"><a href="{Permalink}" class="meta_permalink replace" title="Permanent link to this post">{lang:Permalink}</a></li>
+									{block:NoteCount}<li><a href="{Permalink}#notes" class="meta_likes" title="{lang:This post has NoteCount notes}">{NoteCount}</a></li>{/block:NoteCount}
+									{block:IfDisqusShortname}<li class="disqus_count"><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comments}</a></li>{/block:IfDisqusShortname}
+									{block:IfShowDateOnAllPosts}<li class="posted_date"><a href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonth}/" title="{lang:Show all posts made on this day}">{DayOfMonthWithZero} {ShortMonth}, {Year}</a></li>{/block:IfShowDateOnAllPosts}
+								</ul>
+							{/block:IfNotSingleColumnLayout}
+							{/block:IndexPage}
+						</div>
+					</div>
+				{block:PermalinkPage}
+				</div>
+				<div class="side_meta">
+					<ul class="info">
+					{block:Date}
+						<li class="authored">
+							{block:IfShowAuthorOnPosts}<div class="author_avatar"><img src="{PostAuthorPortraitURL-48}" alt="{PostAuthorName}" width="48" height="48"/></div>{/block:IfShowAuthorOnPosts}
+							<p>posted <a href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonth}/" title="{lang:Show all posts made on this day}">{DayOfMonthWithZero} {Month}, {Year}</a>{block:IfShowAuthorOnPosts}<br />by <a href="{PostAuthorURL}">{PostAuthorName}</a>{/block:IfShowAuthorOnPosts}</p>
+						</li>
+					{/block:Date}
+						{block:RebloggedFrom}<li class="has_icon icon_reblog">{lang:Reblogged from ReblogParentName 2}</li>{/block:RebloggedFrom}
+						{block:PostNotes}<li class="has_icon icon_likes"><a href="#notes">{NoteCountWithLabel}</a> for this post</li>{/block:PostNotes}
+						<li class="has_icon icon_permalink"><a href="{Permalink}">{lang:Permalink}</a> / <a href="{ShortURL}">{lang:Short URL}</a></li>
+						{block:ifShowFacebookLikeButtonForPosts}
+						<li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?href={URLEncodedPermalink}&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;font=lucida%2Bgrande" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px;" allowTransparency="true"></iframe></li>
+						{/block:ifShowFacebookLikeButtonForPosts}
+					</ul>
+					{block:HasTags}
+					<ul class="tags">
+						{block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+					</ul>
+					{/block:HasTags}
+					{block:PermalinkPagination}
+					<ul class="page_nav" style="text-transform:lowercase;">
+						{block:PreviousPost}<li class="has_icon icon_prev"><a href="{PreviousPost}">{lang:Previous post}</a></li>{/block:PreviousPost}
+						{block:NextPost}<li class="has_icon icon_next"><a href="{NextPost}">{lang:Next post}</a></li>{/block:NextPost}
+					</ul>
+					{/block:PermalinkPagination}
+				</div>
+				{/block:PermalinkPage}
+				{block:IndexPage}{block:IfSingleColumnLayout}
+					<div class="side_meta">
+						<ul class="info">
+						{block:Date}
+							<li class="authored">
+								{block:IfShowAuthorOnPosts}<div class="author_avatar"><img src="{PostAuthorPortraitURL-48}" alt="{PostAuthorName}" width="48" height="48"/></div>{/block:IfShowAuthorOnPosts}
+								<p>posted <a href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonth}/" title="{lang:Show all posts made on this day}">{DayOfMonthWithZero} {Month}, {Year}</a>{block:IfShowAuthorOnPosts}<br />by <a href="{PostAuthorURL}">{PostAuthorName}</a>{/block:IfShowAuthorOnPosts}</p>
+							</li>
+						{/block:Date}
+							{block:RebloggedFrom}<li class="has_icon icon_reblog">{lang:Reblogged from ReblogParentName}</li>{/block:RebloggedFrom}
+							{block:NoteCount}<li class="has_icon icon_likes"><a href="{Permalink}#notes">{NoteCountWithLabel}</a> for this post</li>{/block:NoteCount}
+							{block:IfDisqusShortname}<li class="has_icon icon_disqus"><a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comments}</a></li>{/block:IfDisqusShortname}
+							<li class="has_icon icon_permalink"><a href="{Permalink}">{lang:Permalink}</a> / <a href="{ShortURL}">{lang:Short URL}</a></li>
+							{block:ifShowFacebookLikeButtonForPosts}
+							<li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?href={URLEncodedPermalink}&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;font=lucida%2Bgrande" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px;" allowTransparency="true"></iframe></li>
+							{/block:ifShowFacebookLikeButtonForPosts}
+						</ul>
+						{block:HasTags}
+						<ul class="tags">
+							{block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+						</ul>
+						{/block:HasTags}
+					</div>
+				</div>
+				{/block:IfSingleColumnLayout}{/block:IndexPage}
+			{/block:Posts}
+			{block:IndexPage}{block:IfSingleColumnLayout}</div>{/block:IfSingleColumnLayout}{/block:IndexPage}
+		</div>
+		{block:Pagination}
+			<div id="pagination">
+				<ul>
+				{block:IndexPage}<li class="page_count">{lang:Page CurrentPage of TotalPages}</li>{/block:IndexPage}
+				{block:NextPage}<li class="next"><a href="{NextPage}">{lang:Next} &#187;</a></li>{/block:NextPage}
+				{block:PreviousPage}<li class="prev"><a href="{PreviousPage}">&#171; {lang:Previous}</a></li>{/block:PreviousPage}
+				</ul>
+			</div>
+		{/block:Pagination}
+		{block:DayPagination}
+			<div id="pagination">
+				<ul class="day_pagination">
+				{block:PreviousDayPage}<li class="prev"><a href="{PreviousDayPage}">&#171; {DayOfMonth} {ShortMonth}</a></li>{/block:PreviousDayPage}
+				{block:NextDayPage}<li class="next"><a href="{NextDayPage}">{DayOfMonth} {ShortMonth} &#187;</a></li>{/block:NextDayPage}
+				</ul>
+			</div>
+		{/block:DayPagination}
+		{block:IfShowLikes}
+			{block:IndexPage}
+				{block:Likes}
+				<div id="likes_container">
+					<div class="likes_header">
+						<h3>{text:Heading for Likes}</h3>
+						<a href="http://www.tumblr.com/liked/by/{Name}">{lang:See more}</a>
+					</div>
+					{Likes limit="4" width="190"}
+				</div>
+				{/block:Likes}
+			{block:IndexPage}
+		{/block:IfShowLikes}
+	</div>
+	<div id="sidebar">
+		{block:IfShowDescription}{block:Description}<div id="about">{Description}</div>{/block:Description}{/block:IfShowDescription}
+		<ul id="nav">
+			
+			{block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
+		<!--	<li><a href="/archive">{lang:Archive}</a></li>-->
+			{block:AskEnabled}<li><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<li><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+		</ul>
+		
+		{block:Twitter}
+			{block:ifNotHideTwitterUpdates}
+			<div id="twitter" style="display:none;" class="has_icon">
+				<div id="tweets"></div>
+				<p><a href="http://twitter.com/{TwitterUsername}">{lang:Follow on Twitter}</a></p>
+			</div>
+			{/block:ifNotHideTwitterUpdates}
+		{/block:Twitter}
+		{block:IfHeaderImage}
+		<form action="/search" method="get" id="search">
+			<fieldset>
+		    	<input type="text" name="q" id="search_field" value="{SearchQuery}"/>
+		    	<input type="submit" id="search_button" value="{lang:Search}"/>
+			</fieldset>
+		</form>
+		{/block:IfHeaderImage}
+	</div>
+	
+	<div id="footer">
+		
+		<ul class="footer_links">
+			<li class="has_icon icon_rss"><a href="{RSS}">{lang:RSS feed}</a></li>
+			<li class="has_icon icon_random"><a href="/random">{lang:Random}</a></li>
+			<li class="has_icon icon_mobile"><a href="/mobile">{lang:Mobile}</a></li>
+			<li class="has_icon icon_tumblr">{lang:Powered by Tumblr 2}</li>
+		</ul>
+	</div>
+
+</div>
+
+{block:English}<script type="text/javascript"> Cufon.now(); </script>{/block:English}
+{block:Twitter}
+	{block:ifNotHideTwitterUpdates}
+	<script type="text/javascript">
+		function recent_tweets(data) {
+			for (i=0; i<data.length; i++) {
+				document.getElementById("tweets").innerHTML = 
+				document.getElementById("tweets").innerHTML + 
+					'<a href="http://twitter.com/{TwitterUsername}"><div class="content">' + data[i].text + '</div></a>';
+			}
+			document.getElementById("twitter").style.display = 'block';
+		}
+	</script>
+	<script type="text/javascript" src="/tweets.js"></script>
+	{/block:ifNotHideTwitterUpdates}
+{/block:Twitter}
+{block:IfGoogleAnalyticsID}
+<script type="text/javascript">
+// <![CDATA[
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', '{text:Google Analytics ID}']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+// ]]>
+</script>
+{/block:IfGoogleAnalyticsID}
+{block:IfDisqusShortname}
+<script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>
+{block:Permalink}
+<script type="text/javascript">
+	(function() {
+		var path = window.location.pathname;
+		if(path != '/ask/' && path != '/ask' && path != '/submit/' && path != '/submit'){
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = 'http://{text:Disqus shortname}.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);		
+		}
+	})();
+</script>
+{/block:Permalink}
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+	var links = document.getElementsByTagName('a');
+	var query = '?';
+	for(var i = 0; i < links.length; i++) {
+	if(links[i].href.indexOf('#disqus_thread') >= 0) {
+		query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+	}
+	}
+	document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus shortname}/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
+{/block:IfDisqusShortname}
+</body>  		 	
+<!--
+    This Tumblr Theme and all of its CSS, Javascript,
+    and media assets are subject to Tumblr's Terms of Service:
+
+    http://www.tumblr.com/terms_of_service
+-->
+</html>
