@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    rack (1.4.1)
+    rack (1.4.7)
     rackproxy (0.0.2)
       rack (~> 1.4.1)
 
